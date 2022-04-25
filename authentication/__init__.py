@@ -1,1 +1,1 @@
-from .auth import UsernameDatabase
+from .db import UsernameDatabase
