@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-from authentication.auth import UsernameDatabase
+from authentication import UsernameDatabase
 
 
 load_dotenv()
