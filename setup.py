@@ -33,7 +33,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
 
     ],
-    install_requires=["pandas>=1.4.2", "SQLAlchemy>=1.4.35", "psycopg2>=2.9.3", "passlib>=1.7.4"],
+    install_requires=["pandas>=1.4.2", "SQLAlchemy>=1.4.35", "psycopg2>=2.9.3", "passlib>=1.7.4", "streamlit>=1.7.0"],
     python_requires='>=3.9',
 
 )
