@@ -29,10 +29,10 @@ class StreamlitAuthenticator:
                         else:
                             st.error("Wrong password.")
                     else:
-                        st.error("This user is not allowed to access this app.")
+                        st.error("This user is not allowed to access to this app.")
                 else:
-                    st.error("This user is not allowed to access this app.")
+                    st.error("This user is not allowed to access to this app.")
         if 'name' in st.session_state:
             main_app_fct_to_show()
         else:
-            st.info("Log in to access the app.")
+            st.info("Log in to access to the app.")
