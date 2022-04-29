@@ -8,7 +8,7 @@ setuptools.setup(
 
     name="streamlit-authentication",
 
-    version="1.0.3",
+    version="1.0.4",
 
     author="e-vdb",
 
@@ -34,6 +34,6 @@ setuptools.setup(
 
     ],
     install_requires=["pandas>=1.3.0", "SQLAlchemy>=1.4.35", "psycopg2-binary>=2.9.3", "passlib>=1.7.4", "streamlit>=1.7.0"],
-    python_requires='>=3.9',
+    python_requires='>=3.7',
 
 )
