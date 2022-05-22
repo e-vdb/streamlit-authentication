@@ -10,6 +10,7 @@ load_dotenv()
 
 class App:
     def __init__(self):
+        self.user = None
         self.authenticator = StreamlitAuthenticator(username=os.getenv('USERNAME'), password=os.getenv('PASSWORD'),
                                                     host=os.getenv('HOST'), port=os.getenv('PORT'),
                                                     database=os.getenv('DATABASE'))
@@ -17,9 +18,10 @@ class App:
     def authentication(self):
         self.authenticator.authentication(main_app_fct_to_show=self.show, app_name='demo')
 
-    @staticmethod
-    def show():
+    def show(self):
         st.markdown("Successful connection to the streamlit web app.")
+        self.user = st.session_state['name']
+        st.write(self.user)
 
 
 def main():
