@@ -16,6 +16,7 @@ class StreamlitAuthenticator:
         with st.sidebar.form("Connection", clear_on_submit=True):
             username = st.text_input(label="Enter your name")
             password = st.text_input(label="Enter your password", type="password")
+
             if st.form_submit_button("Log in"):
                 if username in self.allowed_users:
                     app_access = self.df_users.loc[self.df_users['username'] == username, 'app_access'].values[0]
@@ -26,6 +27,7 @@ class StreamlitAuthenticator:
                             st.success("You are correctly logged in.")
                             if 'name' not in st.session_state:
                                 st.session_state['name'] = username
+                                #log_out = container_button.form_submit_button('Log out')
                         else:
                             st.error("Wrong password.")
                     else:
@@ -34,5 +36,11 @@ class StreamlitAuthenticator:
                     st.error("This user is not allowed to access to this app.")
         if 'name' in st.session_state:
             main_app_fct_to_show()
+
+
         else:
             st.info("Log in to access to the app.")
+
+    def log_out(self):
+        if 'name' in st.session_state:
+            del st.session_state['name']
