@@ -3,6 +3,7 @@ from sqlalchemy import Column, String, MetaData, Table
 from passlib.hash import pbkdf2_sha256
 import pandas as pd
 import migrate
+from sqlalchemy import update
 
 
 class UsernameDatabase:
@@ -140,3 +141,9 @@ class UsernameDatabase:
         col.create(table, populate_default=True)
         # Column is added to table based on its name
         assert col is table.c[col_name]
+
+    def update_row(self, col_name, col_val, user_name):
+        u = update(self.users_table)
+        u = u.values({col_name: col_val})
+        u = u.where(self.users_table.c.username == user_name)
+        self.engine.execute(u)
