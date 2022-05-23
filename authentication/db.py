@@ -2,6 +2,7 @@ import sqlalchemy
 from sqlalchemy import Column, String, MetaData, Table
 from passlib.hash import pbkdf2_sha256
 import pandas as pd
+import migrate
 
 
 class UsernameDatabase:
@@ -132,3 +133,10 @@ class UsernameDatabase:
         """
         df = pd.read_sql_query('select * from "users_app"', con=self.engine)
         return df
+
+    def add_column_to_db(self, col_name, col_type, default_val):
+        table = migrate.versioning.schema.Table("users_app", self.meta)
+        col = Column(col_name, col_type, default=default_val)
+        col.create(table, populate_default=True)
+        # Column is added to table based on its name
+        assert col is table.c[col_name]
